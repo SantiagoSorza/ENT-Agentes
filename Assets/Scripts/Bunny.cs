@@ -13,12 +13,17 @@ public class Bunny : MonoBehaviour
     public bool isAlive = true;
     public BunnyState currentState = BunnyState.Exploring;
 
+    [Header("Bunny Age")]
+    private BunnyAge bunnyAge;
+
     private Vector3 destination;
     private float h;
 
     private void Start()
     {
         destination = transform.position;
+
+        bunnyAge = GetComponent<BunnyAge>();
     }
 
     public void Simulate(float h)
@@ -203,6 +208,7 @@ public class Bunny : MonoBehaviour
     void Age()
     {
         age += h;
+        bunnyAge.envejecimiento();
     }
 
     void CheckState()
